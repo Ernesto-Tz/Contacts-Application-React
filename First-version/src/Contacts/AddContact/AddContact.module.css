@@ -1,0 +1,51 @@
+.contact-row {
+  display: flex;
+}
+
+.label {
+  color: grey;
+  padding: 0.5rem 1rem;
+}
+
+.name {
+  color: black;
+  padding: 0.5rem 1rem;
+}
+
+.input {
+  width: 20rem;
+  height: 2.5rem;
+  margin: 0.5rem 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  border-width: thin;
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete {
+  background-color: white;
+  color: red;
+  border-color: red;
+}
+
+.edit {
+  background-color: white;
+  border-color: black;
+  margin-left: 2%;
+}
+
+.cancel{
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
+}
+.cancel:hover,
+.cancel:active {
+  background-color: #D3D3D3;
+  border-color: #D3D3D3;
+}
