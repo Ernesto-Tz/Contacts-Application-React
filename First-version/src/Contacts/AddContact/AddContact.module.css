@@ -12,6 +12,13 @@
   padding: 0.5rem 1rem;
 }
 
+.invalid-input {
+  color: red;
+  font-size: 0.8rem;
+  font-family: inherit;
+  margin-left: 7rem;
+}
+
 .input {
   width: 20rem;
   height: 2.5rem;

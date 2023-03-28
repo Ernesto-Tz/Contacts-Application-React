@@ -7,30 +7,51 @@ import styles from "./AddContact.module.css";
 
 const ContactView = (props) => {
   const contCtx = useContext(ContactsContext);
-  const [validInputs, setValidInputs] = useState(true);
   const nameInput = useRef();
   const phoneInput = useRef();
   const emailInput = useRef();
+  const initialState = {
+    validName: true,
+    validPhone: true,
+    validEmail: true,
+  };
+  const [validInputs, setValidInputs] = useState(initialState);
 
   const submitHandler = (event) => {
-    event.preventDefault();
-    const tempContact = {
-      id: Math.random(),
-      name: nameInput.current.value,
-      email: emailInput.current.value,
-      phone: phoneInput.current.value,
-      showing: true
-    };
-
-    if (
-      tempContact.name.trim().length === 0 ||
-      tempContact.phone.trim().length === 0 ||
-      tempContact.email.trim().length === 0
-    ) {
-      setValidInputs(false);
+    event.preventDefault(initialState);
+    setValidInputs((prevState) => {
+      return initialState;
+    });
+    const phoneRGEX = /^[0-9]{10}$/;
+    const phoneResult = phoneRGEX.test(phoneInput.current.value);
+    if (nameInput.current.value.trim().length === 0) {
+      setValidInputs((prevState) => {
+        return { ...prevState, validName: false };
+      });
       return;
     }
 
+    if (phoneInput.current.value.trim().length === 0 || !phoneResult) {
+      setValidInputs((prevState) => {
+        return { ...prevState, validPhone: false };
+      });
+      return;
+    }
+
+    if (emailInput.current.value.trim().length === 0) {
+      setValidInputs((prevState) => {
+        return { ...prevState, validEmail: false };
+      });
+      return;
+    }
+
+    const tempContact = {
+      id: Math.random(),
+      name: nameInput.current.value.trimStart(),
+      email: emailInput.current.value,
+      phone: phoneInput.current.value,
+      showing: true,
+    };
     contCtx.addContact(tempContact);
     props.onClose();
   };
@@ -41,35 +62,39 @@ const ContactView = (props) => {
       <form onSubmit={submitHandler}>
         <div className={`mx-3 ${styles["contact-row"]}`}>
           <label className={styles.label}>Name:</label>
-          <Input
-            ref={nameInput}
-            input={{ placeholder: 'Insert Name' }}
-          />
+          <Input ref={nameInput} input={{ placeholder: "Insert Name" }} />
         </div>
+        {!validInputs.validName && (
+          <p className={`${styles["invalid-input"]}`}>
+            Please enter correct name
+          </p>
+        )}
         <div className={`mx-3 ${styles["contact-row"]}`}>
           <label className={styles.label}>Phone:</label>
-          <Input
-            ref={phoneInput}
-            input={{ placeholder: 'Insert Phone' }}
-          />
+          <Input ref={phoneInput} input={{ placeholder: "Insert Phone" }} />
         </div>
+        {!validInputs.validPhone && (
+          <p className={`${styles["invalid-input"]}`}>
+            Please enter correct phone (10 digits)
+          </p>
+        )}
         <div className={`mx-3 ${styles["contact-row"]}`}>
           <label className={styles.label}>Email:</label>
-          <Input
-            ref={emailInput}
-            input={{ placeholder: 'Insert Email' }}
-          />
-          {/* <input className={styles.input} value={contCtx.displayedContact.email}/> */}
+          <Input ref={emailInput} input={{type: "email", placeholder: "Insert Email" }} />
         </div>
+        {!validInputs.validEmail && (
+          <p className={`${styles["invalid-input"]}`}>
+            Please enter correct email
+          </p>
+        )}
         <div className={`mt-5 mb-3 ${styles.actions}`}>
-          <button className={`btn ${styles.cancel}`} onClick={props.onClose}>
+          <button className={`${styles.cancel}`} onClick={props.onClose}>
             Cancel
           </button>
-          <button className={`btn ${styles.save}`} type="submit">
+          <button className={`${styles.save}`} type="submit">
             Save
           </button>
         </div>
-        {!validInputs && <p className="text-danger">Please enter correct Inputs</p>}
       </form>
     </Modal>
   );
