@@ -13,7 +13,7 @@ const ContactItem = (props) => {
 
   return (
     props.contact.showing && (
-      <div className={`col-lg-4 col-md-6 ${classes.contact}`}>
+      <li className={`col-lg-4 col-md-6 ${classes.contact}`}>
         <div className={classes["contact-name"]} onClick={contactViewHandler}>
           {props.contact.name}
         </div>
@@ -21,7 +21,7 @@ const ContactItem = (props) => {
           <p>{props.contact.email}</p>
           <p>{props.contact.phone}</p>
         </div>
-      </div>
+      </li>
     )
   );
 };

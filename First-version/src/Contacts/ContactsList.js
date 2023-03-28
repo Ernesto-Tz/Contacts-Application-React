@@ -22,7 +22,7 @@ const ContactsList = (props) => {
 
   return (
     <div className={`${classes.container}`}>
-      <div className={`${classes.contacts}`}>
+      <div className={`${classes.contacts} container`}>
         {list}
       </div>
     </div>
