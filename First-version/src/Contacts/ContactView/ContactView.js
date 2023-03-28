@@ -32,8 +32,8 @@ const ContactView = (props) => {
         </div>
       </div>
       <div className={`mt-5 mb-3 ${styles.actions}`}>
-        <button className={`btn ${styles.delete}`} onClick={deleteHandler}>Delete</button>
-        <button className={`btn ${styles.edit}`} onClick={props.onEditContact}>
+        <button className={`${styles.delete}`} onClick={deleteHandler}>Delete</button>
+        <button className={`${styles.edit}`} onClick={props.onEditContact}>
           Edit
         </button>
       </div>

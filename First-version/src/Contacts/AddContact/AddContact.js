@@ -62,10 +62,10 @@ const ContactView = (props) => {
           {/* <input className={styles.input} value={contCtx.displayedContact.email}/> */}
         </div>
         <div className={`mt-5 mb-3 ${styles.actions}`}>
-          <button className={`btn ${styles.delete}`} onClick={props.onClose}>
+          <button className={`btn ${styles.cancel}`} onClick={props.onClose}>
             Cancel
           </button>
-          <button className={`btn ${styles.edit}`} type="submit">
+          <button className={`btn ${styles.save}`} type="submit">
             Save
           </button>
         </div>
