@@ -30,6 +30,7 @@ function App() {
 
   return (
     <ContactsProvider>
+       {/* You can use one component for displaying and editing contacts */}
       {showContactView && (
         <ContactView
           onClose={toggleContactView}
@@ -37,7 +38,10 @@ function App() {
         />
       )}
       {showEditContact && <EditContact onClose={toggleEditContact} />}
-      {showAddContact && <AddContact onClose={toggleAddContact} />}
+      {/* For simple things like toggle something you can use anonymous functions here and no need to create a new function. */}
+      {/* It is good if you have a big component and you will have less functions */}
+      {/* {showAddContact && <AddContact onClose={toggleAddContact} />} */}
+      {showAddContact && <AddContact onClose={() => setShowAddContact(!showAddContact)} />}
       <Header />
       <main>
         <TitleBar/>

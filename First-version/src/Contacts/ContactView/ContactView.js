@@ -11,7 +11,9 @@ const ContactView = (props) => {
     contCtx.deleteContact(contCtx.displayedContact.id);
     props.onClose();
   }
-
+  
+  // You can use this component for editing as well
+  // On Edit click change the a local state and display the input fields or the contact data accordingly
   return (
     <Modal onClose={props.onClose}>
       <h3 className="text-center mt-3 mb-4">Contact Information</h3>

@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 
 import ContactsContext from "../../Store/contacts-context";
 import Input from "../../UI/Input";
-import classes from "./Header.module.css";
+import classes from "./Header.module.scss";
 import VFlogo from "../../Assets/vodafone_logo.svg";
 
 const Header = () => {

@@ -91,6 +91,10 @@ const ContactView = (props) => {
           <button className={`${styles.cancel}`} onClick={props.onClose}>
             Cancel
           </button>
+           {/* You can use Bootstrap classes to do it, no need custom things */}
+          <button className="btn btn-outline-primary" onClick={props.onClose}>
+            Cancel
+          </button>
           <button className={`${styles.save}`} type="submit">
             Save
           </button>

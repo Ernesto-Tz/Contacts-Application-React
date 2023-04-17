@@ -1,0 +1,14 @@
+$red: #e60000;
+
+// You can customize Bootstrap themes. Now e.g.: btn-primary will be a Vodafone red button
+$theme-colors: (
+  'primary': $red
+);
+
+// You can use global variables this way in React.
+// You can use it not only for colors but for paddings, font-sizes, border-radiuses ets.
+// Best practice if you avoid using locally defined things and use global variables instead
+:root {
+  --red: #{$red};
+}
+

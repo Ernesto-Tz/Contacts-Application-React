@@ -7,16 +7,22 @@ const TitleBar = () => {
   const contactsCtx = useContext(ContactsContext);
 
   useEffect(() => {
-    let tempArr = [];
-    for (const contact of contactsCtx.contacts) {
-      if (!tempArr.includes(contact.name[0].toUpperCase())) {
-        const newVal = contact.name[0].toUpperCase();
-        tempArr.push(newVal);
-      }
-    }
-    tempArr.sort();
+    // let tempArr = [];
+    // for (const contact of contactsCtx.contacts) {
+    //   if (!tempArr.includes(contact.name[0].toUpperCase())) {
+    //     const newVal = contact.name[0].toUpperCase();
+    //     tempArr.push(newVal);
+    //   }
+    // }
+    // tempArr.sort();
+
+    // This is a faster and a more elegant way to do this
+    const tempArr = contactsCtx.contacts
+      .map(contact => contact.name.charAt(0))
+      .sort();
+
     setLettersArray((prevState) => {
-      return [...tempArr];
+      return [...new Set(tempArr)];
     });
   }, [contactsCtx.contacts]);
 
@@ -40,9 +46,10 @@ const TitleBar = () => {
   return (
     <div className={`${styles.container}`}>
       <div className={`text-center`}>
-        <span className={styles.title} onClick={clearFilter}>Contacts</span>
+        {/* This way you can keep the width of the title text. In real life of course you should create a class to do it */}
+        <span className={styles.title} style={{ borderBottom: '3px solid red', display: "inline-block", margin: "0 auto" }} onClick={clearFilter}>Contacts</span>
       </div>
-      <div className={`${styles["underline-contacts"]}`} />
+      {/* <div className={`${styles["underline-contacts"]}`} /> */}
       <div className={`${styles["filter-table"]}`}>
         {lettersArray.map((item, index) => (
           <div

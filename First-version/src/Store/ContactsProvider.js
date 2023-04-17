@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import ContactsContext from "./contacts-context";
+// You can try to get the data from an API e.g. from here https://randomuser.me/
 import contacts from "../utils/contacts";
 
 const ContactsProvider = (props) => {
