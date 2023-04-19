@@ -1,5 +1,10 @@
 .container{
   margin-top: 3rem;
+  display: flex;
+}
+
+.wrapper {
+  width: 100%;
 }
 
 .title {
@@ -7,21 +12,19 @@
   font-weight: 600;
   cursor: pointer;
   transition: color 200ms ease-out;
+  // border-bottom: '3px solid red'; 
+  // display: "inline-block";
+  // margin: "0 auto";
 }
-.underline-contacts {
-  content: "";
-  height: 3px;
-  width: 10%;
-  background-color: red;
-  margin-left: 45%;
-}
+
 .filter-table {
   font-size: 30px;
   margin-top: 10px;
-  padding-left: 35%;
   font-weight: 400;
   visibility: visible;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .filter-element {
   margin-right: 3rem;

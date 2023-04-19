@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import ContactsContext from "../Store/contacts-context.js";
 import ContactItem from "./ContactItem.js";
-import classes from "./ContactsList.module.css";
+import classes from "./ContactsList.module.scss";
 
 const ContactsList = (props) => {
   const contactsCtx = useContext(ContactsContext);

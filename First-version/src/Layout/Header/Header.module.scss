@@ -13,14 +13,14 @@
 }
 
 .logo {
-  width: 250px;
-  height: 100px;
+  width: 15.625rem;
+  height: 6.25rem;
   position: relative;
   left: 40px;
   bottom: 5px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .logo {
     width: 13rem;
     height: 5rem;
