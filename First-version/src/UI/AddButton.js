@@ -1,4 +1,4 @@
-import styles from './AddButton.module.css'
+import styles from './AddButton.module.scss'
 
 const AddButton = props => {
   return(
