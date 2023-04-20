@@ -91,20 +91,20 @@ const ContactView = (props) => {
         </div>
         {props.action === "VIEW" && (
           <div className={`mt-4 mb-3 ${styles.actions}`}>
-            <button className={`btn btn-outline-primary`} onClick={deleteHandler}>
+            <button className={`btn btn-outline-primary mx-3`} onClick={deleteHandler}>
               Delete
             </button>
-            <button className={`btn btn-outline-secondary`} onClick={props.onEditContact}>
+            <button className={`btn btn-outline-secondary mx-3`} onClick={props.onEditContact}>
               Edit
             </button>
           </div>
         )}
         {props.action === "EDIT" && (
           <div className={`mt-4 mb-3 ${styles.actions}`}>
-            <button className={`btn btn-outline-primary`} onClick={props.onClose}>
+            <button className={`btn btn-outline-primary mx-3`} onClick={props.onClose}>
               Cancel
             </button>
-            <button className={`btn btn-outline-secondary`} type="submit">
+            <button className={`btn btn-outline-secondary mx-3`} type="submit">
               Save
             </button>
           </div>

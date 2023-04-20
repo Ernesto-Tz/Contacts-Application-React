@@ -28,20 +28,25 @@ const ContactView = (props) => {
       setValidInputs((prevState) => {
         return { ...prevState, validName: false };
       });
-      return;
     }
 
     if (phoneInput.current.value.trim().length === 0 || !phoneResult) {
       setValidInputs((prevState) => {
         return { ...prevState, validPhone: false };
       });
-      return;
     }
 
     if (emailInput.current.value.trim().length === 0) {
       setValidInputs((prevState) => {
         return { ...prevState, validEmail: false };
       });
+    }
+
+    if (
+      nameInput.current.value.trim().length === 0 ||
+      phoneInput.current.value.trim().length === 0 ||
+      emailInput.current.value.trim().length === 0
+    ) {
       return;
     }
 
@@ -74,13 +79,16 @@ const ContactView = (props) => {
           <Input ref={phoneInput} input={{ placeholder: "Insert Phone" }} />
         </div>
         {!validInputs.validPhone && (
-          <p className={`${styles["invalid-input"]}`}>
-            Please enter correct phone (10 digits)
-          </p>
+          <div className={`${styles["invalid-input"]}`}>
+            <p>Please enter correct phone (10 digits)</p>
+          </div>
         )}
         <div className={`mx-3 ${styles["contact-row"]}`}>
           <label className={styles.label}>Email:</label>
-          <Input ref={emailInput} input={{type: "email", placeholder: "Insert Email" }} />
+          <Input
+            ref={emailInput}
+            input={{ type: "email", placeholder: "Insert Email" }}
+          />
         </div>
         {!validInputs.validEmail && (
           <p className={`${styles["invalid-input"]}`}>
@@ -88,14 +96,13 @@ const ContactView = (props) => {
           </p>
         )}
         <div className={`mt-5 mb-3 ${styles.actions}`}>
-          {/* <button className={`${styles.cancel}`} onClick={props.onClose}>
-            Cancel
-          </button> */}
-           {/* You can use Bootstrap classes to do it, no need custom things */}
-          <button className="btn btn-outline-primary" onClick={props.onClose}>
+          <button
+            className="btn btn-outline-primary mx-3"
+            onClick={props.onClose}
+          >
             Cancel
           </button>
-          <button className={`${styles.save}`} type="submit">
+          <button className={`btn btn-outline-secondary mx-3`} type="submit">
             Save
           </button>
         </div>
