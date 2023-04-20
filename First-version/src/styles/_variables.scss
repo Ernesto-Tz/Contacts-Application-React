@@ -1,8 +1,10 @@
 $red: #e60000;
+$black: #000;
 
 // You can customize Bootstrap themes. Now e.g.: btn-primary will be a Vodafone red button
 $theme-colors: (
-  'primary': $red
+  'primary': $red,
+  'secondary': $black
 );
 
 // You can use global variables this way in React.

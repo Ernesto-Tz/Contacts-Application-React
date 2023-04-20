@@ -1,0 +1,33 @@
+.contact-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.label {
+  color: grey;
+  padding: 0.5rem 0;
+}
+
+.name {
+  color: black;
+  display: inline-block;
+  width: 20rem;
+  padding: 0.5rem 1rem;
+}
+
+.text-red {
+  color: red;
+  display: inline-block;
+  width: 20rem;
+  padding: 0.5rem 1rem;
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  margin: 0 0.5rem;
+}

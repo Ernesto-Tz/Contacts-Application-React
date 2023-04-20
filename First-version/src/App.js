@@ -4,49 +4,40 @@ import ContactsProvider from "./Store/ContactsProvider";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
 import AddButton from "./UI/AddButton";
-import TitleBar from './Layout/TitleBar/TitleBar'
+import TitleBar from "./Layout/TitleBar/TitleBar";
 import ContactsList from "./Contacts/ContactsList";
 import ContactView from "./Contacts/ContactView/ContactView";
-import EditContact from "./Contacts/EditContact/EditContact";
 import AddContact from "./Contacts/AddContact/AddContact";
 
 function App() {
   const [showContactView, setShowContactView] = useState(false);
   const [showAddContact, setShowAddContact] = useState(false);
-  const [showEditContact, setShowEditContact] = useState(false);
+  const [contactActions, setContactActions] = useState("");
 
-  const toggleContactView = () => {
-    setShowContactView(!showContactView);
-  };
-
-  const toggleAddContact = () => {
-    setShowAddContact(!showAddContact);
-  };
-
-  const toggleEditContact = () => {
-    setShowContactView(false);
-    setShowEditContact(!showEditContact);
+  const contactViewHandler = () => {
+    setShowContactView(true);
+    setContactActions("VIEW");
   };
 
   return (
     <ContactsProvider>
-       {/* You can use one component for displaying and editing contacts */}
       {showContactView && (
         <ContactView
-          onClose={toggleContactView}
-          onEditContact={toggleEditContact}
+          onClose={() => setShowContactView(false)}
+          onEditContact={() => setContactActions("EDIT")}
+          action={contactActions}
         />
       )}
-      {showEditContact && <EditContact onClose={toggleEditContact} />}
-      {/* For simple things like toggle something you can use anonymous functions here and no need to create a new function. */}
-      {/* It is good if you have a big component and you will have less functions */}
-      {/* {showAddContact && <AddContact onClose={toggleAddContact} />} */}
-      {showAddContact && <AddContact onClose={() => setShowAddContact(!showAddContact)} />}
+      {showAddContact && (
+        <AddContact onClose={() => setShowAddContact(!showAddContact)} />
+      )}
       <Header />
       <main>
-        <TitleBar/>
-        <ContactsList contactViewActive={toggleContactView} />
-        <AddButton onClick={toggleAddContact}>+</AddButton>
+        <TitleBar />
+        <ContactsList contactViewActive={contactViewHandler} />
+        <AddButton onClick={() => setShowAddContact(!showAddContact)}>
+          +
+        </AddButton>
       </main>
       <Footer />
     </ContactsProvider>

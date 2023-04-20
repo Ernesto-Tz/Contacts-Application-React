@@ -3,7 +3,7 @@ import { useContext, useRef, useState } from "react";
 import ContactsContext from "../../Store/contacts-context";
 import Modal from "../../UI/Modal";
 import Input from "../../UI/Input";
-import styles from "./AddContact.module.css";
+import styles from "./AddContact.module.scss";
 
 const ContactView = (props) => {
   const contCtx = useContext(ContactsContext);
@@ -88,9 +88,9 @@ const ContactView = (props) => {
           </p>
         )}
         <div className={`mt-5 mb-3 ${styles.actions}`}>
-          <button className={`${styles.cancel}`} onClick={props.onClose}>
+          {/* <button className={`${styles.cancel}`} onClick={props.onClose}>
             Cancel
-          </button>
+          </button> */}
            {/* You can use Bootstrap classes to do it, no need custom things */}
           <button className="btn btn-outline-primary" onClick={props.onClose}>
             Cancel
