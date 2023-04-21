@@ -45,6 +45,7 @@ const ContactView = (props) => {
     if (
       nameInput.current.value.trim().length === 0 ||
       phoneInput.current.value.trim().length === 0 ||
+      !phoneResult ||
       emailInput.current.value.trim().length === 0
     ) {
       return;
