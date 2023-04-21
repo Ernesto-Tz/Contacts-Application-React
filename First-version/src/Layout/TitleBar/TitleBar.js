@@ -18,7 +18,7 @@ const TitleBar = () => {
 
     // This is a faster and a more elegant way to do this
     const tempArr = contactsCtx.contacts
-      .map((contact) => contact.name.charAt(0))
+      .map((contact) => contact.name.charAt(0).toUpperCase())
       .sort();
 
     setLettersArray((prevState) => {

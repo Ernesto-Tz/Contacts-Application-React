@@ -110,7 +110,7 @@ const ContactView = (props) => {
           </div>
         )}
         {!validInputs && (
-          <p className="text-danger">Please enter correct Inputs</p>
+          <p className={styles["text-red"]}>Please enter correct Inputs</p>
         )}
       </form>
     </Modal>
