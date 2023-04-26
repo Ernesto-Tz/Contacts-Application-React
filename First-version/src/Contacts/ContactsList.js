@@ -12,8 +12,8 @@ const ContactsList = (props) => {
       {contactsCtx.contacts.map((item) => (
         <ContactItem
           key={item.id}
-          id = {item.id}
-          contact = {item}
+          id={item.id}
+          contact={item}
           onClick={props.contactViewActive}
         />
       ))}
@@ -23,7 +23,7 @@ const ContactsList = (props) => {
   return (
     <div className={`${classes.container}`}>
       <div className={`${classes.contacts} container`}>
-        {list}
+        {contactsCtx.isLoading ? <p className="text-center">Loading ...</p> : list}
       </div>
     </div>
   );

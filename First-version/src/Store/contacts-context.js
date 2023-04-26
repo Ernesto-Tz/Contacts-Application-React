@@ -6,7 +6,9 @@ const ContactsContext = React.createContext({
   addContact: (item) => {},
   editContact: (id) => {},
   deleteContact: (id) => {},
-  displayItem: (item) => {}
+  displayItem: (item) => {},
+  isLoading: null,
+  errorMessage: null
 });
 
 
