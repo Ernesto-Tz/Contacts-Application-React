@@ -41,80 +41,92 @@ const ContactView = (props) => {
   };
 
   return (
-    <Modal onClose={props.onClose}>
-      {props.action === "VIEW" && (
-        <h3 className="text-center mt-3 mb-4">Contact Information</h3>
-      )}
-      {props.action === "EDIT" && (
-        <h3 className="text-center mt-3 mb-4">Edit Information</h3>
-      )}
-      <form onSubmit={submitHandler}>
-        <div className={`mx-3 ${styles["contact-row"]}`}>
-          <label className={styles.label}>Name:</label>
-          {props.action === "VIEW" && (
+    <div className="container">
+      <h3 className="text-center mt-3 mb-4">Contact Information</h3>
+      <div styles="background-color: gray">
+        <form onSubmit={submitHandler}>
+          <div className={`mx-3 ${styles["contact-row"]}`}>
+            <label className={styles.label}>Name:</label>
             <div className={styles.name}>{contCtx.displayedContact.name}</div>
-          )}
-          {props.action === "EDIT" && (
-            <Input
-              ref={nameInput}
-              input={{ defaultValue: contCtx.displayedContact.name }}
-            />
-          )}
-        </div>
-        <div className={`mx-3 ${styles["contact-row"]}`}>
-          <label className={styles.label}>Phone:</label>
-          {props.action === "VIEW" && (
-            <div className={styles["text-red"]}>
-              {contCtx.displayedContact.phone}
-            </div>
-          )}
-          {props.action === "EDIT" && (
-            <Input
-              ref={phoneInput}
-              input={{ defaultValue: contCtx.displayedContact.phone }}
-            />
-          )}
-        </div>
-        <div className={`mx-3 ${styles["contact-row"]}`}>
-          <label className={styles.label}>Email:</label>
-          {props.action === "VIEW" && (
-            <div className={styles["text-red"]}>
-              {contCtx.displayedContact.email}
-            </div>
-          )}
-          {props.action === "EDIT" && (
-            <Input
-              ref={emailInput}
-              input={{ defaultValue: contCtx.displayedContact.email }}
-            />
-          )}
-        </div>
-        {props.action === "VIEW" && (
-          <div className={`mt-4 mb-3 ${styles.actions}`}>
-            <button className={`btn btn-outline-primary mx-3`} onClick={deleteHandler}>
-              Delete
-            </button>
-            <button className={`btn btn-outline-secondary mx-3`} onClick={props.onEditContact}>
-              Edit
-            </button>
           </div>
-        )}
-        {props.action === "EDIT" && (
-          <div className={`mt-4 mb-3 ${styles.actions}`}>
-            <button className={`btn btn-outline-primary mx-3`} onClick={props.onClose}>
-              Cancel
-            </button>
-            <button className={`btn btn-outline-secondary mx-3`} type="submit">
-              Save
-            </button>
-          </div>
-        )}
-        {!validInputs && (
-          <p className={styles["text-red"]}>Please enter correct Inputs</p>
-        )}
-      </form>
-    </Modal>
+        </form>
+      </div>
+    </div>
   );
 };
 
 export default ContactView;
+
+// <Modal onClose={props.onClose}>
+//   {props.action === "VIEW" && (
+//     <h3 className="text-center mt-3 mb-4">Contact Information</h3>
+//   )}
+//   {props.action === "EDIT" && (
+//     <h3 className="text-center mt-3 mb-4">Edit Information</h3>
+//   )}
+//   <form onSubmit={submitHandler}>
+//     <div className={`mx-3 ${styles["contact-row"]}`}>
+//       <label className={styles.label}>Name:</label>
+//       {props.action === "VIEW" && (
+//         <div className={styles.name}>{contCtx.displayedContact.name}</div>
+//       )}
+//       {props.action === "EDIT" && (
+//         <Input
+//           ref={nameInput}
+//           input={{ defaultValue: contCtx.displayedContact.name }}
+//         />
+//       )}
+//     </div>
+//     <div className={`mx-3 ${styles["contact-row"]}`}>
+//       <label className={styles.label}>Phone:</label>
+//       {props.action === "VIEW" && (
+//         <div className={styles["text-red"]}>
+//           {contCtx.displayedContact.phone}
+//         </div>
+//       )}
+//       {props.action === "EDIT" && (
+//         <Input
+//           ref={phoneInput}
+//           input={{ defaultValue: contCtx.displayedContact.phone }}
+//         />
+//       )}
+//     </div>
+//     <div className={`mx-3 ${styles["contact-row"]}`}>
+//       <label className={styles.label}>Email:</label>
+//       {props.action === "VIEW" && (
+//         <div className={styles["text-red"]}>
+//           {contCtx.displayedContact.email}
+//         </div>
+//       )}
+//       {props.action === "EDIT" && (
+//         <Input
+//           ref={emailInput}
+//           input={{ defaultValue: contCtx.displayedContact.email }}
+//         />
+//       )}
+//     </div>
+//     {props.action === "VIEW" && (
+//       <div className={`mt-4 mb-3 ${styles.actions}`}>
+//         <button className={`btn btn-outline-primary mx-3`} onClick={deleteHandler}>
+//           Delete
+//         </button>
+//         <button className={`btn btn-outline-secondary mx-3`} onClick={props.onEditContact}>
+//           Edit
+//         </button>
+//       </div>
+//     )}
+//     {props.action === "EDIT" && (
+//       <div className={`mt-4 mb-3 ${styles.actions}`}>
+//         <button className={`btn btn-outline-primary mx-3`} onClick={props.onClose}>
+//           Cancel
+//         </button>
+//         <button className={`btn btn-outline-secondary mx-3`} type="submit">
+//           Save
+//         </button>
+//       </div>
+//     )}
+//     {!validInputs && (
+//       <p className={styles["text-red"]}>Please enter correct Inputs</p>
+//     )}
+//   </form>
+// </Modal>
