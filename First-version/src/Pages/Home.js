@@ -1,26 +1,16 @@
-// import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import AddButton from "../UI/AddButton";
 import TitleBar from "../Layout/TitleBar/TitleBar";
 import ContactsList from "../Contacts/ContactsList";
-// import ContactView from "./Contacts/ContactView/ContactView";
-// import AddContact from "./Contacts/AddContact/AddContact";
 
 function HomePage() {
-  const [showContactView, setShowContactView] = useState(false);
   const [showAddContact, setShowAddContact] = useState(false);
-  const [contactActions, setContactActions] = useState("");
-
-  const contactViewHandler = () => {
-    setShowContactView(true);
-    setContactActions("VIEW");
-  };
 
   return (
     <>
       <TitleBar />
-      <ContactsList contactViewActive={contactViewHandler} />
+      <ContactsList/>
       <AddButton onClick={() => setShowAddContact(!showAddContact)}>
         +
       </AddButton>
