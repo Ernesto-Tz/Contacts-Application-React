@@ -14,7 +14,6 @@ const ContactsList = (props) => {
           key={item.id}
           id={item.id}
           contact={item}
-          onClick={props.contactViewActive}
         />
       ))}
     </ul>
