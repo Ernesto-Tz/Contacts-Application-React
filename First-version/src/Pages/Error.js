@@ -1,4 +1,4 @@
-import Header from '../Layout/Header/Header'
+import Header from '../Layout/Header/Header';
 
 function ErrorPage() {
   return(
