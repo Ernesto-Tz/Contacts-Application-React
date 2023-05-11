@@ -1,20 +1,22 @@
 import { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ContactsContext from "../../Store/contacts-context";
-import Modal from "../../UI/Modal";
-import Input from "../../UI/Input";
-import styles from "./ContactView.module.scss";
+import ContactCard from "./ContactCard";
+import ContactForm from "./ContactForm";
 
 const ContactView = (props) => {
   const contCtx = useContext(ContactsContext);
-  const [validInputs, setValidInputs] = useState(true);
+  const [editingContact, setEditingContact] = useState(false);
   const nameInput = useRef();
   const phoneInput = useRef();
   const emailInput = useRef();
+  const navigate = useNavigate();
 
   const deleteHandler = () => {
     contCtx.deleteContact(contCtx.displayedContact.id);
-    props.onClose();
+    // setEditingContact(false);
+    navigate(`/`);
   };
 
   const submitHandler = (event) => {
@@ -26,107 +28,34 @@ const ContactView = (props) => {
       phone: phoneInput.current.value,
       showing: true,
     };
-
-    if (
-      tempContact.name.trim().length === 0 ||
-      tempContact.phone.trim().length === 0 ||
-      tempContact.email.trim().length === 0
-    ) {
-      setValidInputs(false);
-      return;
-    }
-
     contCtx.editContact(tempContact);
-    props.onClose();
+    navigate(`/`);
   };
 
   return (
-    <div className="container">
-      <h3 className="text-center mt-3 mb-4">Contact Information</h3>
-      <div styles="background-color: gray">
-        <form onSubmit={submitHandler}>
-          <div className={`mx-3 ${styles["contact-row"]}`}>
-            <label className={styles.label}>Name:</label>
-            <div className={styles.name}>{contCtx.displayedContact.name}</div>
-          </div>
-        </form>
-      </div>
-    </div>
+    <>
+      {!editingContact ? (
+        <ContactCard
+          name={contCtx.displayedContact.name}
+          phone={contCtx.displayedContact.phone}
+          email={contCtx.displayedContact.email}
+          onDelete={deleteHandler}
+          onEdit={() => setEditingContact(true)}
+        />
+      ) : (
+        <ContactForm
+          name={contCtx.displayedContact.name}
+          phone={contCtx.displayedContact.phone}
+          email={contCtx.displayedContact.email}
+          nameInput={nameInput}
+          phoneInput={phoneInput}
+          emailInput={emailInput}
+          onSubmitEdit={submitHandler}
+          onCancel={() => setEditingContact(false)}
+        />
+      )}
+    </>
   );
 };
 
 export default ContactView;
-
-// <Modal onClose={props.onClose}>
-//   {props.action === "VIEW" && (
-//     <h3 className="text-center mt-3 mb-4">Contact Information</h3>
-//   )}
-//   {props.action === "EDIT" && (
-//     <h3 className="text-center mt-3 mb-4">Edit Information</h3>
-//   )}
-//   <form onSubmit={submitHandler}>
-//     <div className={`mx-3 ${styles["contact-row"]}`}>
-//       <label className={styles.label}>Name:</label>
-//       {props.action === "VIEW" && (
-//         <div className={styles.name}>{contCtx.displayedContact.name}</div>
-//       )}
-//       {props.action === "EDIT" && (
-//         <Input
-//           ref={nameInput}
-//           input={{ defaultValue: contCtx.displayedContact.name }}
-//         />
-//       )}
-//     </div>
-//     <div className={`mx-3 ${styles["contact-row"]}`}>
-//       <label className={styles.label}>Phone:</label>
-//       {props.action === "VIEW" && (
-//         <div className={styles["text-red"]}>
-//           {contCtx.displayedContact.phone}
-//         </div>
-//       )}
-//       {props.action === "EDIT" && (
-//         <Input
-//           ref={phoneInput}
-//           input={{ defaultValue: contCtx.displayedContact.phone }}
-//         />
-//       )}
-//     </div>
-//     <div className={`mx-3 ${styles["contact-row"]}`}>
-//       <label className={styles.label}>Email:</label>
-//       {props.action === "VIEW" && (
-//         <div className={styles["text-red"]}>
-//           {contCtx.displayedContact.email}
-//         </div>
-//       )}
-//       {props.action === "EDIT" && (
-//         <Input
-//           ref={emailInput}
-//           input={{ defaultValue: contCtx.displayedContact.email }}
-//         />
-//       )}
-//     </div>
-//     {props.action === "VIEW" && (
-//       <div className={`mt-4 mb-3 ${styles.actions}`}>
-//         <button className={`btn btn-outline-primary mx-3`} onClick={deleteHandler}>
-//           Delete
-//         </button>
-//         <button className={`btn btn-outline-secondary mx-3`} onClick={props.onEditContact}>
-//           Edit
-//         </button>
-//       </div>
-//     )}
-//     {props.action === "EDIT" && (
-//       <div className={`mt-4 mb-3 ${styles.actions}`}>
-//         <button className={`btn btn-outline-primary mx-3`} onClick={props.onClose}>
-//           Cancel
-//         </button>
-//         <button className={`btn btn-outline-secondary mx-3`} type="submit">
-//           Save
-//         </button>
-//       </div>
-//     )}
-//     {!validInputs && (
-//       <p className={styles["text-red"]}>Please enter correct Inputs</p>
-//     )}
-//   </form>
-// </Modal>

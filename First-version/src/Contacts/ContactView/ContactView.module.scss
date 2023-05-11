@@ -1,7 +1,19 @@
+.container {
+  margin-top: 3rem;
+}
+
 .contact-row {
   display: flex;
   justify-content: center;
   gap: 2rem;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  display: "inline-block";
+  border-bottom: "3px solid red";
+  margin: "0 auto";
 }
 
 .label {
@@ -25,6 +37,14 @@
   padding: 0.5rem 1rem;
 }
 
+.invalid-input {
+  color: red;
+  font-size: 0.8rem;
+  font-family: inherit;
+  margin-right: 7rem;
+  display: flex;
+  justify-content: flex-end;
+}
 .actions{
   display: flex;
   justify-content: center;
