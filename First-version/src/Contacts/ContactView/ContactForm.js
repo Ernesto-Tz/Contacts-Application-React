@@ -1,25 +1,7 @@
 import { useState } from "react";
 import Modal from "../../UI/Modal";
-import Input from "../../UI/Input";
 import styles from "./ContactView.module.scss";
-
-const LabelInput = (props) => {
-  return (
-    <>
-      <div className={`mx-3 ${styles["contact-row"]}`}>
-        <label className={styles.label}>{props.label}</label>
-        <Input ref={props.property} input={{ defaultValue: props.text }} />
-      </div>
-      <div className={`mx-3 ${styles["contact-row"]}`}>
-        {!props.isValid && (
-          <p className={`${styles["invalid-input"]}`}>
-            Please enter correct data
-          </p>
-        )}
-      </div>
-    </>
-  );
-};
+import LabelInput from "../../UI/LabelInput";
 
 function ContactForm(props) {
   const [confirmModal, setConfirmModal] = useState(false);
@@ -51,18 +33,21 @@ function ContactForm(props) {
         property={props.nameInput}
         text={props.name}
         isValid={validInputs}
+        errorMessage="Please enter a valid name"
       />
       <LabelInput
         label="Phone:"
         property={props.phoneInput}
         text={props.phone}
         isValid={validInputs}
+        errorMessage="Please enter a valid phone number"
       />
       <LabelInput
         label="Email:"
         property={props.emailInput}
         text={props.email}
         isValid={validInputs}
+        errorMessage="Please enter a valid email"
       />
       <div className={`mt-4 mb-3 ${styles.actions}`}>
         <button
