@@ -10,7 +10,7 @@ const ContactItem = (props) => {
 
   const contactViewHandler = () => {
     contCtx.displayItem({ ...props.contact });
-    navigate(`/contacts/${props.contact.id}`);
+    navigate(`/contacts/${props.urlId}`);
   };
 
   return (

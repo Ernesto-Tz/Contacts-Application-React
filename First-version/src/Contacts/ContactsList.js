@@ -9,10 +9,10 @@ const ContactsList = (props) => {
 
   const list = (
     <ul>
-      {contactsCtx.contacts.map((item) => (
+      {contactsCtx.contacts.map((item, index) => (
         <ContactItem
           key={item.id}
-          id={item.id}
+          urlId={index}
           contact={item}
         />
       ))}
