@@ -1,0 +1,17 @@
+
+.container {
+  margin-top: 3rem;
+}
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  display: "inline-block";
+  border-bottom: "3px solid red";
+  margin: "0 auto";
+}
+
+.actions{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

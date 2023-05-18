@@ -1,17 +1,16 @@
-import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import AddButton from "../UI/AddButton";
 import TitleBar from "../Layout/TitleBar/TitleBar";
 import ContactsList from "../Contacts/ContactsList";
 
 function HomePage() {
-  const [showAddContact, setShowAddContact] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
       <TitleBar />
       <ContactsList/>
-      <AddButton onClick={() => setShowAddContact(!showAddContact)}>
+      <AddButton onClick={() => navigate("/contacts/add")}>
         +
       </AddButton>
     </>

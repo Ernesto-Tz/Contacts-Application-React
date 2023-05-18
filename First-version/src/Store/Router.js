@@ -3,6 +3,7 @@ import RootLayout from '../Pages/Root';
 import HomePage from '../Pages/Home'
 import ErrorPage from '../Pages/Error';
 import ContactPage from '../Pages/Contact'
+import AddContactPage from '../Pages/AddContact'
 
 
 const router = createBrowserRouter([
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <HomePage /> },
       { path: "/contacts/:contactId", element: <ContactPage/> },
+      { path: "/contacts/add", element: <AddContactPage/> },
     ],
   },
 ]);

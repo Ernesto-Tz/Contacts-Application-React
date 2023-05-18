@@ -6,7 +6,7 @@ function LabelInput(props) {
     <>
       <div className={`mx-3 ${styles["contact-row"]}`}>
         <label className={styles.label}>{props.label}</label>
-        <Input ref={props.property} input={{ defaultValue: props.text }} />
+        <Input ref={props.property} input={{ defaultValue: props.text,  placeholder: props.placeHolder }} />
       </div>
       <div className={`mx-3 ${styles["contact-row"]}`}>
         {!props.isValid && (

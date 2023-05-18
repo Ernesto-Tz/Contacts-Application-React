@@ -5,7 +5,7 @@ import ContactsContext from "../../Store/contacts-context";
 import ContactCard from "./ContactCard";
 import ContactForm from "./ContactForm";
 
-const ContactView = (props) => {
+const ContactView = () => {
   const contCtx = useContext(ContactsContext);
   const [editingContact, setEditingContact] = useState(false);
   const nameInput = useRef();
