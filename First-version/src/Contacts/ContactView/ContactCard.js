@@ -56,7 +56,7 @@ function ContactCard(props) {
     { deleteModalIsShown &&
       <Modal onClose={() => setDeleteModalIsShown(false)}>
         <h4>Are you sure you want to delete this contact?</h4>
-        <div className={`mt-4 mb-3`}>
+        <div className={`mt-5 mb-2 text-center`}>
           <button
             className={`btn btn-outline-primary mx-3`}
             onClick={props.onDelete}

@@ -14,17 +14,20 @@
   left: 5%;
   width: 90%;
   background-color: white;
-  padding: 1rem;
+  padding: 1.5rem 2.5rem;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
   .modal {
-    width: 40rem;
-    left: calc(50% - 20rem);
+    width: 30rem;
+    min-height: 12rem;
+    left: calc(50% - 15rem);
   }
 }
 

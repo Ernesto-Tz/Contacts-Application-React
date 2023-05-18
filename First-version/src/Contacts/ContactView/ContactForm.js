@@ -86,7 +86,7 @@ function ContactForm(props) {
       {confirmModal && (
         <Modal onClose={() => setConfirmModal(false)}>
           <h4>Are you sure you want to edit this contact?</h4>
-          <div className={`mt-4 mb-3`}>
+          <div className={`mt-5 mb-2 text-center`}>
             <button
               className={`btn btn-outline-primary mx-3`}
               onClick={() => setConfirmModal(false)}
